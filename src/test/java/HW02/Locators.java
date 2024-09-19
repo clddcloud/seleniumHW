@@ -21,15 +21,14 @@ Acceptance Criteria
 3. When the user clicks on the "Click Here" link, a new tab should open in the browser.
 4. When the user clicks the "Submit" button, all the entered options should be displayed on the screen.
      */
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
         WebDriver driver=new ChromeDriver();
         driver.get("https://www.syntaxprojects.com/locator-homework.php");
         driver.manage().window().maximize();
         WebElement firstName = driver.findElement(By.id("fullName"));
         firstName.sendKeys("John Smith");
         WebElement eMail = driver.findElement(By.name("yourEmail"));
-        eMail.sendKeys("john@syntax.com");
-        //   eMail.sendKeys("john'at'syntax.com");
+        eMail.sendKeys("john'at'syntax.com");
         WebElement clientName = driver.findElement(By.id("clientNameId"));
         clientName.sendKeys("John Smith");
         WebElement clientID= driver.findElement(By.id("ClientId"));
@@ -47,6 +46,10 @@ Acceptance Criteria
         WebElement clickHere=driver.findElement(By.partialLinkText("Click Here"));
         clickHere.click();
         WebElement submit = driver.findElement(By.id("btn-submit"));
+        submit.click();
+        Thread.sleep(6000);
+        eMail.clear();
+        eMail.sendKeys("john@syntax.com");
         submit.click();
 
         List<WebElement> form=driver.findElements(By.id("form-results"));
