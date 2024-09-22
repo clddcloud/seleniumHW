@@ -57,7 +57,7 @@ public class RadioButton {
            WebElement show= driver.findElement(By.xpath("//button[@id='showRadioButtons']"));
            show.click();
        }
-        if (winter.isDisplayed()){
+        if (winter.isDisplayed() && winter.isEnabled()){
             winter.click();
         }
 
