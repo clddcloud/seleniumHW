@@ -41,5 +41,7 @@ public class Iframe {
         WebElement username= driver.findElement(By.xpath("//input[@name='Username']"));
         username.sendKeys("Artem123");
 
+        driver.quit();
+
     }
 }
