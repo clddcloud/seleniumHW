@@ -61,19 +61,15 @@ public class Calendar {
             driver.get("https://syntaxprojects.com/jquery-date-picker-demo-homework.php");
             int startDay = 20;
             String startMonth = "October";
-            int startYear = 2025;
+            int startYear = 2022;
             int endDay=10;
             String endMonth = "May";
             int endYear = 2026;
-            if (startYear>endYear){
-                System.out.println("not possible");
-            } else if (startYear==endYear && monthToNumber(startMonth) > monthToNumber(endMonth)){
-                System.out.println("not possible also");
-            } else {
-                // start date
-                driver.findElement(By.id("from_date")).click();
-                boolean notDate = true;
-                while (notDate) {
+            // I would add if else condition here to check if the end date is not before the start date. But the calendar on the website does not care
+            // first box
+            driver.findElement(By.id("from_date")).click();
+            boolean notDate = true;
+            while (notDate) {
                     WebElement currentYearElement = driver.findElement(By.xpath("//span[@class='ui-datepicker-year']"));
                     int currentYear = Integer.parseInt(currentYearElement.getText());
                     WebElement currentMonthElement = driver.findElement(By.xpath("//span[@class='ui-datepicker-month']"));
@@ -100,10 +96,10 @@ public class Calendar {
                         }
                     }
                 }
-            // end date
-                driver.findElement(By.id("to_date")).click();
-                notDate = true;
-                while (notDate) {
+            // second box
+            driver.findElement(By.id("to_date")).click();
+            notDate = true;
+            while (notDate) {
                     WebElement currentYearElement = driver.findElement(By.xpath("//span[@class='ui-datepicker-year']"));
                     int currentYear = Integer.parseInt(currentYearElement.getText());
                     WebElement currentMonthElement = driver.findElement(By.xpath("//span[@class='ui-datepicker-month']"));
@@ -131,4 +127,4 @@ public class Calendar {
                     }
                 }
             }
-}}
+}
